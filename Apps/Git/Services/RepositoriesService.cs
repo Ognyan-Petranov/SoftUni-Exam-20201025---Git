@@ -44,7 +44,7 @@ namespace Git.Services
                     Id = x.RepositoryId,
                     Name = x.Name,
                     Owner = x.Owner.Username,
-                    CreatedOn = x.CreatedOn.ToString("dd/mm/yyyy HH:mm"),
+                    CreatedOn = x.CreatedOn.ToString("dd/MM/yyyy HH:mm"),
                     CommitsCount = x.Commits.Count
 
                 }).ToList();
@@ -57,7 +57,7 @@ namespace Git.Services
                 {
                     Name = x.Name,
                     Owner = x.Owner.Username,
-                    CreatedOn = x.CreatedOn.ToString("dd/mm/yyyy HH:mm"),
+                    CreatedOn = x.CreatedOn.ToString("dd/MM/yyyy HH:mm"),
                     CommitsCount = x.Commits.Count
 
                 }).ToList();
