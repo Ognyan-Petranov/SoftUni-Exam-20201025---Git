@@ -20,12 +20,22 @@ namespace Git.Controllers
         [HttpGet]
         public HttpResponse Login()
         {
+            if (this.IsUserSignedIn())
+            {
+                return this.Redirect("/Repositories/All");
+            }
+
             return this.View();
         }
 
         [HttpPost]
         public HttpResponse Login(string username, string password)
         {
+            if (this.IsUserSignedIn())
+            {
+                return this.Redirect("/Repositories/All");
+            }
+
             string userId = this.usersService.GetUserId(username, password);
             if (userId == null)
             {
@@ -38,12 +48,22 @@ namespace Git.Controllers
         [HttpGet]
         public HttpResponse Register()
         {
+            if (this.IsUserSignedIn())
+            {
+                return this.Redirect("/Repositories/All");
+            }
+
             return this.View();
         }
 
         [HttpPost]
         public HttpResponse Register(string username, string email, string password, string confirmPassword)
         {
+            if (this.IsUserSignedIn())
+            {
+                return this.Redirect("/Repositories/All");
+            }
+
             if (password != confirmPassword)
             {
                 return this.Error("Both passwords did not match!");
@@ -81,6 +101,11 @@ namespace Git.Controllers
         [HttpGet]
         public HttpResponse Logout()
         {
+            if (!this.IsUserSignedIn())
+            {
+                return this.Error("You need to be logged in in order to log out!");
+            }
+
             this.SignOut();
             return this.Redirect("/Users/Login");
         }

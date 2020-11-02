@@ -13,5 +13,7 @@ namespace Git.Services
         ICollection<RepositoryViewModel> GetRepositories();
 
         ICollection<RepositoryViewModel> GetRepositoriesByUser(string userId);
+
+        Repository GetRepositoryById(string id);
     }
 }

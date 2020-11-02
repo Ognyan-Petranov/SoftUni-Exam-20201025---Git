@@ -3,6 +3,7 @@ using Git.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
 namespace Git.Services
@@ -40,6 +41,7 @@ namespace Git.Services
             return this.dbContext.Repositories.Where(x => x.IsPublic == true)
                 .Select(x => new RepositoryViewModel()
                 {
+                    Id = x.RepositoryId,
                     Name = x.Name,
                     Owner = x.Owner.Username,
                     CreatedOn = x.CreatedOn.ToString("dd/mm/yyyy HH:mm"),
@@ -59,6 +61,11 @@ namespace Git.Services
                     CommitsCount = x.Commits.Count
 
                 }).ToList();
+        }
+
+        public Repository GetRepositoryById(string id)
+        {
+            return this.dbContext.Repositories.FirstOrDefault(x => x.RepositoryId == id);
         }
     }
 }
