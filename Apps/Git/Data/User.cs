@@ -10,6 +10,8 @@ namespace Git.Data
         public User()
         {
             this.UserId = Guid.NewGuid().ToString();
+            this.Repositories = new HashSet<Repository>();
+            this.Commits = new HashSet<Commit>();
         }
 
         [Key]
