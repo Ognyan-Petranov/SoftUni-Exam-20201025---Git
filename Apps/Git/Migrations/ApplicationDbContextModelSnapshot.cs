@@ -74,7 +74,7 @@ namespace Git.Migrations
 
             modelBuilder.Entity("Git.Data.User", b =>
                 {
-                    b.Property<string>("UserID")
+                    b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Email")
@@ -90,7 +90,7 @@ namespace Git.Migrations
                         .HasColumnType("nvarchar(20)")
                         .HasMaxLength(20);
 
-                    b.HasKey("UserID");
+                    b.HasKey("UserId");
 
                     b.ToTable("Users");
                 });

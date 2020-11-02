@@ -9,11 +9,11 @@ namespace Git.Data
     {
         public User()
         {
-            this.UserID = Guid.NewGuid().ToString();
+            this.UserId = Guid.NewGuid().ToString();
         }
 
         [Key]
-        public string UserID { get; set; }
+        public string UserId { get; set; }
 
         [Required]
         [StringLength(20, MinimumLength = 5)]
